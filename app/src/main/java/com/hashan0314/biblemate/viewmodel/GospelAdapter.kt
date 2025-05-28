@@ -1,0 +1,47 @@
+/*
+ * Copyright (c) 2025. Hashan Silva
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ */
+
+package com.hashan0314.biblemate.viewmodel
+
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.core.text.HtmlCompat
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
+import com.hashan0314.biblemate.databinding.ItemGospelBinding
+import com.hashan0314.biblemate.model.Item
+
+class GospelAdapter : ListAdapter<Item, GospelAdapter.GospelViewHolder>(GospelDiffCallback()) {
+
+    inner class GospelViewHolder(private val binding: ItemGospelBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(item: Item) {
+            binding.itemTitle.text = item.pubDate
+            binding.itemDescription.text =
+                HtmlCompat.fromHtml(item.description, HtmlCompat.FROM_HTML_MODE_LEGACY)
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GospelViewHolder {
+        val binding = ItemGospelBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return GospelViewHolder(binding)
+    }
+
+    override fun onBindViewHolder(holder: GospelViewHolder, position: Int) {
+       val item = getItem(position)
+        holder.bind(item)
+    }
+
+}

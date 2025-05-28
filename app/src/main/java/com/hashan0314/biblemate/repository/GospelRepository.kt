@@ -13,14 +13,18 @@
  *
  */
 
-package com.hashan0314.biblemate.ui.theme
+package com.hashan0314.biblemate.repository
 
-import androidx.compose.ui.graphics.Color
+import com.hashan0314.biblemate.model.RssFeed
+import com.hashan0314.biblemate.network.RetrofitClient
+import com.hashan0314.biblemate.network.RssService
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
+class GospelRepository {
 
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
+    private val rssService: RssService = RetrofitClient.service
+
+    suspend fun fetchRssFeed(): RssFeed {
+        return rssService.getDailyGospel()
+    }
+
+}
