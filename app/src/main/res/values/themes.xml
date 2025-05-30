@@ -22,5 +22,76 @@
         <!-- Add other tab customizations here -->
     </style>
 
+    <!-- Base application theme. -->
+    <style name="Theme.VeritasDaily" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/orange_primary</item>
+        <item name="colorPrimaryVariant">@color/orange_primary_dark</item>
+        <item name="colorOnPrimary">@color/text_on_orange_primary</item>
+
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/orange_accent</item>
+        <item name="colorSecondaryVariant">@color/orange_primary_dark</item>
+        <item name="colorOnSecondary">@color/text_on_orange_accent</item>
+
+        <!-- Background and Surface colors -->
+        <item name="android:windowBackground">@color/cream_background</item>
+        <item name="colorSurface">@color/cream_surface</item>
+        <item name="colorOnSurface">@color/text_on_cream_surface</item>
+        <item name="android:colorBackground">@color/cream_background</item>
+        <item name="colorOnBackground">@color/text_on_cream_background</item>
+
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+
+        <!-- THIS IS WHERE YOU DEFINE THE DEFAULT TOOLBAR STYLE -->
+        <item name="toolbarStyle">@style/Widget.VeritasDaily.Toolbar</item>
+        <!-- For MaterialToolbars specifically, you can also use materialToolbarStyle -->
+        <!-- However, toolbarStyle is more general and often preferred if you want it to apply to all toolbars -->
+        <!-- If you use MaterialToolbar everywhere, materialToolbarStyle is fine too. -->
+        <!-- <item name="materialToolbarStyle">@style/Widget.VeritasDaily.Toolbar</item> -->
+
+
+        <!-- Example: Styling for TabLayout to use new colors -->
+        <item name="tabStyle">@style/Widget.VeritasDaily.TabLayout</item>
+    </style>
+
+    <!-- Custom Toolbar Style -->
+    <!-- The parent here should be a Material Components Toolbar style -->
+    <style name="Widget.VeritasDaily.Toolbar"
+        parent="Widget.MaterialComponents.Toolbar.PrimarySurface">
+        <!-- You can override attributes here, but the main ones like background and titleTextColor
+             are often better handled by theming if they should match colorPrimary/colorOnPrimary -->
+        <item name="android:background">?attr/colorPrimary</item> <!-- Use theme attribute -->
+        <item name="titleTextColor">?attr/colorOnPrimary</item> <!-- Use theme attribute -->
+        <item name="subtitleTextColor">?attr/colorOnPrimary</item> <!-- If you use subtitles -->
+        <!-- For the navigation icon (hamburger, back arrow) and action icons (overflow menu) -->
+        <item name="navigationIconTint">?attr/colorOnPrimary</item>
+        <item name="iconTint">?attr/colorOnPrimary
+        </item> <!-- For action menu items if not overridden by item specific tint -->
+        <item name="android:theme">@style/ThemeOverlay.VeritasDaily.Toolbar
+        </item> <!-- For theming popup menus -->
+    </style>
+
+    <!-- This overlay theme is used for the Toolbar's popup menu (e.g., overflow menu) -->
+    <!-- to ensure its text and icon colors match your colorOnPrimary or a specific color -->
+    <style name="ThemeOverlay.VeritasDaily.Toolbar"
+        parent="ThemeOverlay.MaterialComponents.Toolbar.Primary">
+        <!-- This ensures text in the overflow menu is colorOnPrimary -->
+        <item name="android:textColorPrimary">?attr/colorOnPrimary</item>
+        <!-- This ensures icons in the overflow menu are colorOnPrimary -->
+        <item name="android:iconTint" tools:targetApi="o">?attr/colorOnPrimary</item>
+        <item name="actionMenuTextColor">?attr/colorOnPrimary</item>
+    </style>
+
+
+    <!-- Custom TabLayout Style -->
+    <style name="Widget.VeritasDaily.TabLayout" parent="Widget.MaterialComponents.TabLayout">
+        <item name="tabIndicatorColor">?attr/colorSecondary</item>
+        <item name="tabSelectedTextColor">?attr/colorSecondary</item>
+        <item name="tabTextColor">@color/text_on_cream_surface</item>
+        <item name="android:background">?attr/colorPrimary</item>
+    </style>
+
  
 </resources>

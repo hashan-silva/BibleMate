@@ -22,13 +22,33 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.hashan0314.biblemate.databinding.ItemGospelBinding
 import com.hashan0314.biblemate.model.Item
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class GospelAdapter : ListAdapter<Item, GospelAdapter.GospelViewHolder>(GospelDiffCallback()) {
 
     inner class GospelViewHolder(private val binding: ItemGospelBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Item) {
-            binding.itemTitle.text = item.pubDate
+            if (item.pubDate.isNotBlank()) {
+                try {
+                    val date =
+                        SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss Z", Locale.getDefault()).parse(
+                            item.pubDate
+                        )
+                    if (date != null) {
+                        val formattedDate =
+                            SimpleDateFormat("EEE dd MMM yyyy", Locale.getDefault()).format(date)
+                        binding.itemTitle.text = formattedDate
+                    } else {
+                        binding.itemTitle.text = item.pubDate
+                    }
+                } catch (e: Exception) {
+                    binding.itemTitle.text = item.pubDate
+                }
+            } else {
+                binding.itemTitle.text = item.pubDate
+            }
             binding.itemDescription.text =
                 HtmlCompat.fromHtml(item.description, HtmlCompat.FROM_HTML_MODE_LEGACY)
         }
@@ -40,7 +60,7 @@ class GospelAdapter : ListAdapter<Item, GospelAdapter.GospelViewHolder>(GospelDi
     }
 
     override fun onBindViewHolder(holder: GospelViewHolder, position: Int) {
-       val item = getItem(position)
+        val item = getItem(position)
         holder.bind(item)
     }
 

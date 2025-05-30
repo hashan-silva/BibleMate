@@ -7,4 +7,24 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <!-- Orange Palette -->
+    <color name="orange_primary">#FFA726</color> <!-- A nice, friendly orange (e.g., Material Orange 400) -->
+    <color name="orange_primary_dark">#F57C00</color> <!-- A darker shade for variants (e.g., Material Orange 700) -->
+    <color name="orange_accent">#FF6D00</color> <!-- A vibrant orange for accents (e.g., Material Orange A700) -->
+
+    <!-- Cream/Off-White Palette -->
+    <color name="cream_background">#FFF8E1</color> <!-- A warm off-white/light cream (e.g., Material Amber 50) -->
+    <color name="cream_surface">#FFECB3</color> <!-- A slightly darker cream for surfaces (e.g., Material Amber 100) -->
+
+    <!-- Text Colors -->
+    <color name="text_on_orange_primary">#FFFFFF</color> <!-- White text on your primary orange -->
+    <color name="text_on_cream_surface">#4E342E</color> <!-- A dark brown/deep gray for text on cream -->
+    <color name="text_on_cream_background">#4E342E</color> <!-- Similar for background -->
+    <color name="text_on_orange_accent">#FFFFFF</color>
+
+    <!-- You might need variations for dark mode if you want a different feel -->
+    <color name="orange_primary_dark_mode">#FFB74D</color> <!-- Lighter orange for dark mode primary -->
+    <color name="cream_surface_dark_mode">#424242</color> <!-- Darker surface for dark mode -->
+    <color name="text_on_orange_primary_dark_mode">#000000</color>
+    <color name="text_on_cream_surface_dark_mode">#E0E0E0</color>
 </resources>
