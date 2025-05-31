@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2025. Hashan Silva
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
+  ~
+  -->
+
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/nav_daily_gospel_fragment">
+
+    <fragment
+        android:id="@+id/nav_daily_gospel_fragment"
+        android:name=".ui.fragment.DailyGospelFragment"
+        android:label="Daily Gospel"
+        tools:layout="@layout/fragement_daily_gospel"/>
+
+    <fragment
+        android:id="@+id/nav_rosary_fragment"
+        android:name=".ui.fragment.RosaryFragment"
+        android:label="Rosary"
+        tools:layout="@layout/fragment_rosary"/>
+
+</navigation>

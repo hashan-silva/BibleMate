@@ -13,11 +13,11 @@
  *
  */
 
-package com.hashan0314.biblemate.viewmodel
+package com.hashan0314.veritasdaily.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.hashan0314.biblemate.repository.GospelRepository
+import com.hashan0314.veritasdaily.repository.GospelRepository
 
 class GospelViewModelFactory(private val repository: GospelRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

@@ -1,4 +1,4 @@
-package com.hashan0314.biblemate
+package com.hashan0314.veritasdaily
 
 import org.junit.Test
 

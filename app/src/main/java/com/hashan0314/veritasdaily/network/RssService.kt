@@ -13,20 +13,12 @@
  *
  */
 
-package com.hashan0314.biblemate.model
+package com.hashan0314.veritasdaily.network
 
-import org.simpleframework.xml.Element
-import org.simpleframework.xml.ElementList
-import org.simpleframework.xml.Root
+import com.hashan0314.veritasdaily.model.RssFeed
+import retrofit2.http.GET
 
-@Root(name = "channel", strict = false)
-data class Channel(
-    @field:Element(name = "title")
-    var title: String = "",
-
-    @field:Element(name = "description")
-    var description: String = "",
-
-    @field:ElementList(inline = true, entry = "item")
-    var items: MutableList<Item> = ArrayList()
-)
+interface RssService {
+    @GET("en/word-of-the-day.rss.xml")
+    suspend fun getDailyGospel(): RssFeed
+}

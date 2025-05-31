@@ -13,12 +13,18 @@
  *
  */
 
-package com.hashan0314.biblemate.network
+package com.hashan0314.veritasdaily.viewmodel
 
-import com.hashan0314.biblemate.model.RssFeed
-import retrofit2.http.GET
+import androidx.recyclerview.widget.DiffUtil
+import com.hashan0314.veritasdaily.model.Item
 
-interface RssService {
-    @GET("en/word-of-the-day.rss.xml")
-    suspend fun getDailyGospel(): RssFeed
+class GospelDiffCallback : DiffUtil.ItemCallback<Item>() {
+    override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean {
+        return oldItem.guid == newItem.guid
+    }
+
+    override fun areContentsTheSame(oldItem: Item, newItem: Item): Boolean {
+       return oldItem == newItem
+    }
+
 }

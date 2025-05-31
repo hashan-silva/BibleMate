@@ -13,22 +13,14 @@
  *
  */
 
-package com.hashan0314.biblemate.model
+package com.hashan0314.veritasdaily.ui.theme
 
-import android.icu.text.CaseMap.Title
-import org.simpleframework.xml.Element
-import org.simpleframework.xml.Namespace
-import org.simpleframework.xml.Root
+import androidx.compose.ui.graphics.Color
 
-@Root(name = "item", strict = false)
-data class Item(
+val Purple80 = Color(0xFFD0BCFF)
+val PurpleGrey80 = Color(0xFFCCC2DC)
+val Pink80 = Color(0xFFEFB8C8)
 
-    @field:Element(name = "description", required = false)
-    var description: String = "",
-
-    @field:Element(name = "guid", required = false)
-    var guid: String = "",
-
-    @field:Element(name = "pubDate", required = false)
-    var pubDate: String = ""
-)
+val Purple40 = Color(0xFF6650a4)
+val PurpleGrey40 = Color(0xFF625b71)
+val Pink40 = Color(0xFF7D5260)

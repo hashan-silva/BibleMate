@@ -13,7 +13,7 @@
  *
  */
 
-package com.hashan0314.biblemate.network
+package com.hashan0314.veritasdaily.network
 
 import org.simpleframework.xml.convert.AnnotationStrategy
 import org.simpleframework.xml.core.Persister

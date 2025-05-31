@@ -13,15 +13,15 @@
  *
  */
 
-package com.hashan0314.biblemate.viewmodel
+package com.hashan0314.veritasdaily.viewmodel
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.text.HtmlCompat
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.hashan0314.biblemate.databinding.ItemGospelBinding
-import com.hashan0314.biblemate.model.Item
+import com.hashan0314.veritasdaily.databinding.ItemGospelBinding
+import com.hashan0314.veritasdaily.model.Item
 import java.text.SimpleDateFormat
 import java.util.Locale
 

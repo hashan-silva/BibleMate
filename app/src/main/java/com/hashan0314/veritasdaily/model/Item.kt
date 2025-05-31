@@ -13,18 +13,20 @@
  *
  */
 
-package com.hashan0314.biblemate.viewmodel
+package com.hashan0314.veritasdaily.model
 
-import androidx.recyclerview.widget.DiffUtil
-import com.hashan0314.biblemate.model.Item
+import org.simpleframework.xml.Element
+import org.simpleframework.xml.Root
 
-class GospelDiffCallback : DiffUtil.ItemCallback<Item>() {
-    override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean {
-        return oldItem.guid == newItem.guid
-    }
+@Root(name = "item", strict = false)
+data class Item(
 
-    override fun areContentsTheSame(oldItem: Item, newItem: Item): Boolean {
-       return oldItem == newItem
-    }
+    @field:Element(name = "description", required = false)
+    var description: String = "",
 
-}
+    @field:Element(name = "guid", required = false)
+    var guid: String = "",
+
+    @field:Element(name = "pubDate", required = false)
+    var pubDate: String = ""
+)

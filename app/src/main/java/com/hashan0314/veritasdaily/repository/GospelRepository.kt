@@ -13,11 +13,11 @@
  *
  */
 
-package com.hashan0314.biblemate.repository
+package com.hashan0314.veritasdaily.repository
 
-import com.hashan0314.biblemate.model.RssFeed
-import com.hashan0314.biblemate.network.RetrofitClient
-import com.hashan0314.biblemate.network.RssService
+import com.hashan0314.veritasdaily.model.RssFeed
+import com.hashan0314.veritasdaily.network.RetrofitClient
+import com.hashan0314.veritasdaily.network.RssService
 
 class GospelRepository {
 
