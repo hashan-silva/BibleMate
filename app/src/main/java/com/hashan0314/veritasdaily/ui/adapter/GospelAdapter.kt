@@ -13,7 +13,7 @@
  *
  */
 
-package com.hashan0314.veritasdaily.viewmodel
+package com.hashan0314.veritasdaily.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

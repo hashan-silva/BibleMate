@@ -25,8 +25,8 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.tabs.TabLayout
 import com.hashan0314.veritasdaily.databinding.FragementDailyGospelBinding
-import com.hashan0314.veritasdaily.viewmodel.GospelAdapter
-import com.hashan0314.veritasdaily.viewmodel.GospelViewModel
+import com.hashan0314.veritasdaily.ui.adapter.GospelAdapter
+import com.hashan0314.veritasdaily.ui.viewmodel.GospelViewModel
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date

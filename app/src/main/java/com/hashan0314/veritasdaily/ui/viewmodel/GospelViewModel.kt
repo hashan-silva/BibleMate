@@ -13,7 +13,7 @@
  *
  */
 
-package com.hashan0314.veritasdaily.viewmodel
+package com.hashan0314.veritasdaily.ui.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData

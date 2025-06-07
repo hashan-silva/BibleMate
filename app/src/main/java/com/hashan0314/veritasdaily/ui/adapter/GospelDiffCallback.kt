@@ -13,7 +13,7 @@
  *
  */
 
-package com.hashan0314.veritasdaily.viewmodel
+package com.hashan0314.veritasdaily.ui.adapter
 
 import androidx.recyclerview.widget.DiffUtil
 import com.hashan0314.veritasdaily.model.Item

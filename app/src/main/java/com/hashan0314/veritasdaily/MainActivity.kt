@@ -29,8 +29,8 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.hashan0314.veritasdaily.databinding.ActivityMainBinding
 import com.hashan0314.veritasdaily.repository.GospelRepository
-import com.hashan0314.veritasdaily.viewmodel.GospelViewModel
-import com.hashan0314.veritasdaily.viewmodel.GospelViewModelFactory
+import com.hashan0314.veritasdaily.ui.viewmodel.GospelViewModel
+import com.hashan0314.veritasdaily.ui.viewmodel.GospelViewModelFactory
 
 class MainActivity : AppCompatActivity() {
 

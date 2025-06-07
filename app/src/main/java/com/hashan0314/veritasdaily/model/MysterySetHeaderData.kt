@@ -13,19 +13,11 @@
  *
  */
 
-package com.hashan0314.veritasdaily.viewmodel
+package com.hashan0314.veritasdaily.model
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import com.hashan0314.veritasdaily.repository.GospelRepository
-
-class GospelViewModelFactory(private val repository: GospelRepository) : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if(modelClass.isAssignableFrom(GospelViewModel::class.java)){
-            @Suppress
-                ("UNCHECKED_CAST")
-            return GospelViewModel(repository) as T
-        }
-        throw IllegalArgumentException("Unknown ViewModel class")
-    }
-}
+data class MysterySetHeaderData(
+    val id: String,
+    val setName: String,
+    val daysDisplay: String?,
+    var isExpanded:Boolean = false
+)
