@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:textStyle="bold"
-                android:textAppearance="?attr/textAppearanceListItem"
+                android:textAppearance="?attr/textAppearanceHeadline6"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/imageView_expand_icon"
                 app:layout_constraintStart_toStartOf="parent"
@@ -66,13 +66,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:textAppearance="?attr/textAppearanceBodyMedium" />
+                android:textAppearance="?attr/textAppearanceHeadline6" />
 
             <TextView
                 android:id="@+id/textView_mystery_fruit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?attr/textAppearanceBodySmall"
+                android:textAppearance="?attr/textAppearanceBody1"
                 android:textStyle="italic" />
 
         </LinearLayout>

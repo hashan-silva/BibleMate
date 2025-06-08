@@ -23,7 +23,7 @@
         android:id="@+id/itemTitle"
         android:textStyle="bold"
         android:textSize="18sp"
-        android:textAppearance="?attr/textAppearanceCaption"
+        android:textAppearance="?attr/textAppearanceHeadline4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
