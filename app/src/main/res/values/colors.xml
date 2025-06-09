@@ -36,8 +36,8 @@
     <color name="veritas_text_on_orange_accent_dark_mode">#000000</color> <!-- Black text on lighter accent -->
 
     <!-- Dark Mode: Backgrounds and Surfaces (Replacing Cream) -->
-    <color name="veritas_dark_background">#121212</color> <!-- Standard dark background -->
-    <color name="veritas_dark_surface">#1E1E1E</color>   <!-- Standard dark surface -->
+    <color name="veritas_dark_background">#2E2825</color> <!-- Standard dark background -->
+    <color name="veritas_dark_surface">#332B27</color>   <!-- Standard dark surface -->
     <!-- Optional: A slightly "warmer" dark surface, subtly hinting at your cream/orange theme -->
     <!-- <color name="veritas_dark_surface_warm">#2C2A27</color> -->
 
