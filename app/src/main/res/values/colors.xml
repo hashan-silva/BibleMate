@@ -27,4 +27,25 @@
     <color name="cream_surface_dark_mode">#424242</color> <!-- Darker surface for dark mode -->
     <color name="text_on_orange_primary_dark_mode">#000000</color>
     <color name="text_on_cream_surface_dark_mode">#E0E0E0</color>
+    <!-- Dark Mode: Orange Palette for VeritasDaily Theme -->
+    <color name="veritas_orange_primary_dark_mode">#FFB74D</color> <!-- Lighter Orange (Material Orange 300) -->
+    <color name="veritas_orange_primary_variant_dark_mode">#FFA726</color> <!-- Medium Orange (Material Orange 400), could be same as primary or slightly darker -->
+    <color name="veritas_text_on_orange_primary_dark_mode">#000000</color> <!-- Black text on the lighter orange -->
+
+    <color name="veritas_orange_accent_dark_mode">#FF9100</color> <!-- Lighter Accent Orange (Material Orange A400) -->
+    <color name="veritas_text_on_orange_accent_dark_mode">#000000</color> <!-- Black text on lighter accent -->
+
+    <!-- Dark Mode: Backgrounds and Surfaces (Replacing Cream) -->
+    <color name="veritas_dark_background">#121212</color> <!-- Standard dark background -->
+    <color name="veritas_dark_surface">#1E1E1E</color>   <!-- Standard dark surface -->
+    <!-- Optional: A slightly "warmer" dark surface, subtly hinting at your cream/orange theme -->
+    <!-- <color name="veritas_dark_surface_warm">#2C2A27</color> -->
+
+    <!-- Dark Mode: Text Colors for VeritasDaily Theme -->
+    <color name="veritas_text_on_dark_surface">#E0E0E0</color>       <!-- Light gray for primary text on dark surfaces -->
+    <color name="veritas_text_on_dark_background">#FFFFFF</color>     <!-- White or very light gray for text on the darkest background -->
+    <color name="veritas_text_on_dark_surface_variant">#BDBDBD</color> <!-- Medium gray for secondary/less prominent text -->
+
+    <!-- Ripple color for dark theme -->
+    <color name="veritas_ripple_material_dark">#40FFFFFF</color>
 </resources>

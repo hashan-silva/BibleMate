@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Dark application theme for VeritasDaily. -->
+    <style name="Theme.VeritasDaily" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/veritas_orange_primary_dark_mode</item>
+        <item name="colorPrimaryVariant">@color/veritas_orange_primary_variant_dark_mode</item>
+        <item name="colorOnPrimary">@color/veritas_text_on_orange_primary_dark_mode</item>
+
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/veritas_orange_accent_dark_mode</item>
+        <item name="colorSecondaryVariant">@color/veritas_orange_primary_variant_dark_mode</item> <!-- Can reuse primary variant or define a specific secondary variant -->
+        <item name="colorOnSecondary">@color/veritas_text_on_orange_accent_dark_mode</item>
+
+        <!-- Background and Surface colors -->
+        <item name="android:windowBackground">@color/veritas_dark_background</item>
+        <item name="colorSurface">@color/veritas_dark_surface</item>
+        <item name="colorOnSurface">@color/veritas_text_on_dark_surface</item>
+        <item name="android:colorBackground">@color/veritas_dark_background</item>
+        <item name="colorOnBackground">@color/veritas_text_on_dark_background</item>
+        <item name="colorOnSurfaceVariant">@color/veritas_text_on_dark_surface_variant</item>
+
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorSurface</item> <!-- Or @color/veritas_dark_surface -->
+
+        <!-- Control colors -->
+        <item name="colorControlNormal">@color/veritas_text_on_dark_surface_variant</item> <!-- For icons, etc. -->
+        <item name="colorControlActivated">?attr/colorPrimary</item>
+        <item name="colorControlHighlight">@color/veritas_ripple_material_dark</item>
+
+        <!-- Ensure Toolbar and TabLayout styles also adapt or are defined for dark mode -->
+        <item name="toolbarStyle">@style/Widget.VeritasDaily.Toolbar</item>
+        <item name="tabStyle">@style/Widget.VeritasDaily.TabLayout</item>
+
+        <!-- You might need to adjust or create dark versions of specific widget styles
+             if they don't inherit colors correctly from the theme. -->
+    </style>
+
+    <!--
+        Dark Mode Specific Widget Styles (if needed)
+        These are only necessary if your base widget styles in values/themes.xml
+        hardcode light colors or don't use theme attributes that adapt.
+        If your base Widget.VeritasDaily.Toolbar and Widget.VeritasDaily.TabLayout
+        already use attributes like ?attr/colorSurface, ?attr/colorOnSurface, etc.,
+        they should adapt automatically and you might not need these overrides here.
+    -->
+
+    <style name="Widget.VeritasDaily.Toolbar" parent="Widget.MaterialComponents.Toolbar.Surface">
+        <!-- Example: Assuming the toolbar should use the main surface color in dark mode -->
+        <item name="android:background">?attr/colorSurface</item>
+        <!-- The theme overlay will handle text and icon colors -->
+        <item name="android:theme">@style/ThemeOverlay.VeritasDaily.Toolbar.Dark</item>
+        <item name="popupTheme">@style/ThemeOverlay.MaterialComponents.Light</item> <!-- Or a dark popup theme if needed -->
+    </style>
+
+    <style name="ThemeOverlay.VeritasDaily.Toolbar.Dark" parent="ThemeOverlay.MaterialComponents.Toolbar.Surface">
+        <!-- Text color for the title -->
+        <item name="android:textColorPrimary">?attr/colorOnSurface</item>
+        <!-- Text color for the subtitle -->
+        <item name="android:textColorSecondary">?attr/colorOnSurfaceVariant</item>
+        <!-- Color for navigation icon (e.g., back arrow) and action icons -->
+        <item name="colorControlNormal">?attr/colorOnSurface</item>
+        <!-- Color for overflow icon (three dots) -->
+        <item name="actionMenuTextColor">?attr/colorOnSurface</item>
+    </style>
+
+
+    <style name="Widget.VeritasDaily.TabLayout" parent="Widget.MaterialComponents.TabLayout">
+        <item name="android:background">?attr/colorSurface</item> <!-- Or colorPrimary if tabs are on primary color -->
+        <item name="tabIndicatorColor">?attr/colorPrimary</item>
+        <item name="tabTextColor">?attr/colorOnSurfaceVariant</item>
+        <item name="tabSelectedTextColor">?attr/colorOnSurface</item>
+        <item name="tabIconTint">?attr/colorOnSurfaceVariant</item>
+        <!-- For selected tab icon tint, you might need a ColorStateList or to set it programmatically
+             if you want it different from tabIconTint and linked to selection state.
+             Often, tabIconTint is sufficient if it contrasts well when selected. -->
+    </style>
+
+    <!--
+        If your TabLayout is part of an AppBar that uses colorPrimary, you might have a style like this:
+    <style name="Widget.VeritasDaily.TabLayout.Primary" parent="Widget.MaterialComponents.TabLayout.Primary">
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="tabIndicatorColor">?attr/colorOnPrimary</item>
+        <item name="tabTextColor">@color/your_tab_text_color_on_primary_dark</item>
+        <item name="tabSelectedTextColor">?attr/colorOnPrimary</item>
+        <item name="tabIconTint">@color/your_tab_icon_tint_on_primary_dark</item>
+    </style>
+    You would then need to define:
+    <color name="your_tab_text_color_on_primary_dark">#B3FFFFFF</color> // Example: 70% white
+    <color name="your_tab_icon_tint_on_primary_dark">#B3FFFFFF</color>  // Example: 70% white
+    in your values-night/colors.xml
+    -->
+
+</resources>
