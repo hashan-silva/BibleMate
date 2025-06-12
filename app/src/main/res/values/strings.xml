@@ -1,4 +1,20 @@
 <resources>
     <string name="app_name">Veritas Daily</string>
     <string name="expand_or_collapse">Expand or collapse</string>
+    <string name="about_title">About</string>
+    <string name="app_icon_desc">App Icon</string>
+    <string name="about_description_text">Veritas Daily is your companion for daily prayer and
+        reflection, featuring the Holy Rosary, Daily Gospel readings, and more to support your
+        spiritual journey.
+    </string>
+    <string name="gospel_source_attribution">Daily Gospel readings are sourced from the RSS feed of
+        Vatican News (vaticannews.va). Used with gratitude.
+    </string>
+    <string name="developed_by">Developed by Shermal Hashan Silva (shermal0415@gmail.com)</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="menu_about">About</string>
+<!-- In res/values/strings.xml -->
+    <string name="version_format">Version %1$s (%2$d)</string>
+    <string name="version_na">Version N/A</string>
+    <string name="privacy_policy_url">https://www.freeprivacypolicy.com/live/40cdf670-e4ea-4b8e-a61e-9c2064d4c209</string>
 </resources>

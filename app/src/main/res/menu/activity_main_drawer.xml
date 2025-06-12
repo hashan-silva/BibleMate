@@ -14,19 +14,28 @@
   -->
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
 
-        <item android:id="@+id/nav_daily_gospel_fragment"
+        <item
+            android:id="@+id/nav_daily_gospel_fragment"
             android:icon="@drawable/ic_menu_book"
-            android:title="Daily Gospel"/>
+            android:title="Daily Gospel" />
 
-        <item android:id="@+id/nav_rosary_fragment"
+        <item
+            android:id="@+id/nav_rosary_fragment"
             android:icon="@drawable/ic_menu_rosary"
-            android:title="Rosary"/>
+            android:title="Rosary" />
 
+        <item
+            android:id="@+id/nav_about_fragment"
+            android:icon="@drawable/ic_menu_info"
+            android:orderInCategory="100"
+            android:title="@string/about_title"
+            app:showAsAction="never"/>
     </group>
 
 </menu>

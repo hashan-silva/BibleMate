@@ -31,4 +31,11 @@
         android:label="Rosary"
         tools:layout="@layout/fragment_rosary"/>
 
+    <fragment
+        android:id="@+id/nav_about_fragment"
+        android:name=".ui.fragment.AboutFragment"
+        android:label="About"
+        tools:layout="@layout/fragment_about"/>
+
+
 </navigation>

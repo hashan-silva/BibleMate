@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
 
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.nav_daily_gospel_fragment, R.id.nav_rosary_fragment),
+            setOf(R.id.nav_daily_gospel_fragment, R.id.nav_rosary_fragment, R.id.nav_about_fragment),
             drawerLayout
         )
 
