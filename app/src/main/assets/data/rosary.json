@@ -47,30 +47,35 @@
         {
           "id": "joy1",
           "title": "The Annunciation",
+          "caption": "First Joyful Mystery",
           "description": "And when the angel had come to her, he said, 'Hail, full of grace, the Lord is with thee. Blessed art thou among women.' \n(Luke 1:28)",
           "fruit": "Humility"
         },
         {
           "id": "joy2",
           "title": "The Visitation",
+          "caption": "Second Joyful Mystery",
           "description": "Elizabeth was filled with the Holy Spirit and cried out in a loud voice: 'Blest are you among women and blest is the fruit of your womb.' \n(Luke 1:41-42)",
           "fruit": "Love of Neighbor"
         },
         {
           "id": "joy3",
           "title": "The Nativity",
+          "caption": "Third Joyful Mystery",
           "description": "She gave birth to her first-born Son and wrapped Him in swaddling clothes and laid Him in a manger, because there was no room for them in the place where travelers lodged. \n(Luke 2:7)",
           "fruit": "Poverty"
         },
         {
           "id": "joy4",
           "title": "The Presentation",
+          "caption": "Fourth Joyful Mystery",
           "description": "When the day came to purify them according to the law of Moses, the couple brought Him up to Jerusalem so that He could be presented to the Lord, for it is written in the law of the Lord, 'Every first-born male shall be consecrated to the Lord.' \n(Luke 2:22-23)",
           "fruit": "Obedience"
         },
         {
           "id": "joy5",
           "title": "The Finding in the Temple",
+          "caption": "Fifth Joyful Mystery",
           "description": "On the third day they came upon Him in the temple sitting in the midst of the teachers, listening to them and asking them questions.\n(Luke 2:46)",
           "fruit": "Joy in Finding Jesus"
         }
@@ -85,30 +90,35 @@
         {
           "id": "lum1",
           "title": "Baptism of Jesus",
+          "caption": "First Luminous Mystery",
           "description": "And when Jesus was baptized, … the heavens were opened and He saw the Spirit of God descending like a dove, and alighting on Him, and lo, a voice from heaven, saying 'this is My beloved Son,' with whom I am well pleased.' \n(Matthew 3:16-17)",
           "fruit": "Openness to the Holy Spirit"
         },
         {
           "id": "lum2",
           "title": "Wedding at Cana",
+          "caption": "Second Luminous Mystery",
           "description": "His mother said to the servants, 'Do whatever He tells you.' … Jesus said to them, 'Fill the jars with water.' And they filled them up to the brim.\n(John 2:5-7)",
           "fruit": "To Jesus through Mary"
         },
         {
           "id": "lum3",
           "title": "Proclaiming the Kingdom",
+          "caption": "Third Luminous Mystery",
           "description": "And preach as you go, saying, 'The kingdom of heaven is at hand.' Heal the sick, raise the dead, cleanse lepers, cast out demons. You received without pay, give without pay. \n(Matthew 10:7-8)",
           "fruit": "Repentance and Trust in God"
         },
         {
           "id": "lum4",
           "title": "Transfiguration",
+          "caption": "Fourth Luminous Mystery",
           "description": "And as He was praying, the appearance of His countenance was altered and His raiment become dazzling white. And a voice came out of the cloud saying, 'This is My Son, My chosen; listen to Him!' \n(Luke 9:29, 35)",
           "fruit": "Desire for Holiness"
         },
         {
           "id": "lum5",
           "title": "Institution of the Eucharist",
+          "caption": "Fifth Luminous Mystery",
           "description": "And He took bread, and when He had given thanks He broke it and gave it to them, saying, 'This is My body which is given for you.' … And likewise the cup after supper, saying, 'This cup which is poured out for you is the new covenant in My blood.' \n(Luke 22:19-20)",
           "fruit": "Adoration"
         }
@@ -124,30 +134,35 @@
         {
           "id": "sor1",
           "title": "The Agony in the Garden",
+          "caption": "First Sorrowful Mystery",
           "description": "In His anguish He prayed with all the greater intensity, and His sweat became like drops of blood falling to the ground. Then He rose from prayer and came to His disciples, only to find them asleep, exhausted with grief.\n(Luke 22:44-45)",
           "fruit": "Sorrow for Sin"
         },
         {
           "id": "sor2",
           "title": "The Scourging at the Pillar",
+          "caption": "Second Sorrowful Mystery",
           "description": "Pilate’s next move was to take Jesus and have Him scourged.\n(John 19:1)",
           "fruit": "Purity"
         },
         {
           "id": "sor3",
           "title": "The Crowning with Thorns",
+          "caption": "Third Sorrowful Mystery",
           "description": "They stripped off His clothes and wrapped Him in a scarlet military cloak. Weaving a crown out of thorns they fixed it on His head, and stuck a reed in His right hand …\n(Matthew 27:28-29)",
           "fruit": "Courage"
         },
         {
           "id": "sor4",
           "title": "The Carrying of the Cross",
+          "caption": "Fourth Sorrowful Mystery",
           "description": "… carrying the cross by Himself, He went out to what is called the Place of the Skull (in Hebrew, Golgotha)\n(John 19:17)",
           "fruit": "Patience"
         },
         {
           "id": "sor5",
           "title": "The Crucifixion",
+          "caption": "Fifth Sorrowful Mystery",
           "description": "Jesus uttered a loud cry and said, 'Father, into Your hands I commend My spirit.' After He said this, He expired.\n(Luke 23:46)",
           "fruit": "Perseverance"
         }
@@ -163,30 +178,35 @@
         {
           "id": "glo1",
           "title": "The Resurrection",
+          "caption": "First Glorious Mystery",
           "description": "You need not be amazed! You are looking for Jesus of Nazareth, the one who was crucified. He has been raised up; He is not here. See the place where they laid Him.\n(Mark 16:6)",
           "fruit": "Faith"
         },
         {
           "id": "glo2",
           "title": "The Ascension",
+          "caption": "Second Glorious Mystery",
           "description": "Then, after speaking to them, the Lord Jesus was taken up into Heaven and took His seat at God’s right hand.\n(Mark 16:19)",
           "fruit": "Hope"
         },
         {
           "id": "glo3",
           "title": "The Descent of the Holy Spirit",
+          "caption": "Third Glorious Mystery",
           "description": "All were filled with the Holy Spirit. They began to express themselves in foreign tongues and make bold proclamation as the Spirit prompted them.\n(Acts 2:4)",
           "fruit": "Love of God"
         },
         {
           "id": "glo4",
           "title": "The Assumption of Mary",
+          "caption": "Fourth Glorious Mystery",
           "description": "You are the glory of Jerusalem … you are the splendid boast of our people … God is pleased with what you have wrought. May you be blessed by the Lord Almighty forever and ever.\n(Judith 15:9-10)",
           "fruit": "Grace of a Happy Death"
         },
         {
           "id": "glo5",
           "title": "The Coronation of Mary",
+          "caption": "Fifth Glorious Mystery",
           "description": "A great sign appeared in the sky, a woman clothed with the sun, with the moon under her feet, and on her head a crown of twelve stars.\n(Revelation 12:1)",
           "fruit": "Trust in Mary's Intercession"
         }

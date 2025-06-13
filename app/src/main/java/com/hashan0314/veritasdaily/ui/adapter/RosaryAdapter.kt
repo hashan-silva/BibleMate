@@ -110,6 +110,7 @@ class RosaryAdapter(private val onHeaderClicked: (String) -> Unit) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(mystery: RosaryMystery) {
             binding.textViewMysteryTitle.text = mystery.title
+            binding.textViewMysteryCaption.text = mystery.caption
             binding.textViewMysteryDescription.text = mystery.description
             binding.textViewMysteryFruit.text = "Fruit of the Mystery: ${mystery.fruit}"
 
