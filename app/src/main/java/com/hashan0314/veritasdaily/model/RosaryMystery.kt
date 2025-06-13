@@ -18,6 +18,7 @@ package com.hashan0314.veritasdaily.model
 data class RosaryMystery(
     val id:String,
     val title:String,
+    val caption:String,
     val description:String,
     val fruit:String,
     var isExpanded:Boolean = false
