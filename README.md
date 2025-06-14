@@ -1,6 +1,7 @@
 # Veritas Daily - Android App
 
 [![Build Status](https://github.com/hashansilva/BibleMate/actions/workflows/android_build.yml/badge.svg)](https://github.com/hashansilva/BibleMate/actions/workflows/android_build.yml)
+[![CodeQL](https://github.com/hashansilva/BibleMate/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/hashansilva/BibleMate/actions/workflows/github-code-scanning/codeql)
 
 **Veritas Daily** is a spiritual companion Android application for daily prayer and reflection. It
 includes features such as the Holy Rosary, Daily Gospel readings (sourced from Vatican News), and an
@@ -51,15 +52,13 @@ About section for more context on its usage and content.
 
 ## Screenshots
 
-```html
-<p align="center">
+<div align="center" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
     <img src=".github/screenshots/Screenshot_20250608_191211.png" width="200" alt="Launch Screen">
     <img src=".github/screenshots/Screenshot_20250608_191237.png" width="200" alt="Gospel Screen">
     <img src=".github/screenshots/Screenshot_20250608_191309.png" width="200" alt="Navigation Screen">
     <img src=".github/screenshots/Screenshot_20250608_191339.png" width="200" alt="Rosary Screen 1">
     <img src=".github/screenshots/Screenshot_20250608_191406.png" width="200" alt="Rosary Screen 2">
-</p>
-```
+</div>
 
 ---
 
