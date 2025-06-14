@@ -15,6 +15,7 @@
 
 package com.hashan0314.veritasdaily.ui.adapter
 
+import android.annotation.SuppressLint
 import androidx.recyclerview.widget.DiffUtil
 import com.hashan0314.veritasdaily.model.MysterySetHeaderData
 import com.hashan0314.veritasdaily.model.RosaryMystery
@@ -32,6 +33,7 @@ class RosaryDiffCallback : DiffUtil.ItemCallback<Any>() {
         }
     }
 
+    @SuppressLint("DiffUtilEquals")
     override fun areContentsTheSame(oldItem: Any, newItem: Any): Boolean {
         return when {
             oldItem is StandardPrayer && newItem is StandardPrayer -> oldItem == newItem
