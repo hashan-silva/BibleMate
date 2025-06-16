@@ -23,5 +23,7 @@ jobs:
         distribution: 'corretto'    
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
+    - name: Clean project
+      run: ./gradlew clean
     - name: Build with Gradle
-      run: ./gradlew build -Pandroid.injected.testOnly=false --warning-mode=none -Pandroid.injected.signing.store.file= -Pandroid.injected.signing.key.alias= -Pandroid.injected.signing.key.password= -Pandroid.injected.signing.store.password=
+      run: ./gradlew build -Pandroid.injected.testOnly=false --warning-mode=none
