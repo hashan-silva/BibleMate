@@ -21,12 +21,6 @@ jobs:
         distribution: 'corretto'
         cache: gradle
 
-    - name: Generate debug.keystore
-      run: |
-        keytool -genkey -v -keystore debug.keystore -storepass android -alias androiddebugkey -keypass android -dname "CN=Android Debug,O=Android,C=US" -keyalg RSA -keysize 2048 -validity 10000
-        mkdir -p ~/.android
-        mv debug.keystore ~/.android/debug.keystore
-
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
 
@@ -34,4 +28,4 @@ jobs:
       run: ./gradlew clean
 
     - name: Build with Gradle
-      run: ./gradlew assembleDebug -Pandroid.injected.signing.store.file= -Pandroid.injected.signing.key.alias= -Pandroid.injected.signing.key.password= -Pandroid.injected.signing.store.password= --warning-mode=none
+      run: ./gradlew build -x validateSigningDebug --warning-mode=none
