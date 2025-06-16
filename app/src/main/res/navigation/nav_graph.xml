@@ -22,20 +22,26 @@
     <fragment
         android:id="@+id/nav_daily_gospel_fragment"
         android:name=".ui.fragment.DailyGospelFragment"
-        android:label="Daily Gospel"
+        android:label="@string/daily_gospel_menu_title"
         tools:layout="@layout/fragement_daily_gospel"/>
 
     <fragment
         android:id="@+id/nav_rosary_fragment"
         android:name=".ui.fragment.RosaryFragment"
-        android:label="Rosary"
+        android:label="@string/rosary_menu_title"
         tools:layout="@layout/fragment_rosary"/>
 
     <fragment
         android:id="@+id/nav_about_fragment"
         android:name=".ui.fragment.AboutFragment"
-        android:label="About"
+        android:label="@string/about_title"
         tools:layout="@layout/fragment_about"/>
+
+    <dialog
+        android:id="@+id/nav_select_lang_fragment"
+        android:name=".ui.fragment.LanguagePickerDialogFragment"
+        android:label="@string/menu_language"
+        tools:layout="@layout/dialog_language_picker"/>
 
 
 </navigation>

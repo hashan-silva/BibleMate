@@ -15,16 +15,23 @@
 
 package com.hashan0314.veritasdaily.repository
 
+import android.content.Context
+import com.hashan0314.veritasdaily.helper.LocaleHelper
 import com.hashan0314.veritasdaily.model.RssFeed
 import com.hashan0314.veritasdaily.network.RetrofitClient
 import com.hashan0314.veritasdaily.network.RssService
 
-class GospelRepository {
+class GospelRepository(private val context: Context) {
 
     private val rssService: RssService = RetrofitClient.service
 
     suspend fun fetchRssFeed(): RssFeed {
-        return rssService.getDailyGospel()
+        val currentLanguage = LocaleHelper.getSelectedLanguage(context)
+        if (currentLanguage == "en") {
+            return rssService.getDailyGospelEn()
+        }else {
+            return rssService.getDailyGospelIt()
+        }
     }
 
 }

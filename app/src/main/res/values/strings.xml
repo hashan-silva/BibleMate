@@ -17,4 +17,10 @@
     <string name="version_format">Version %1$s (%2$d)</string>
     <string name="version_na">Version N/A</string>
     <string name="privacy_policy_url">https://www.freeprivacypolicy.com/live/40cdf670-e4ea-4b8e-a61e-9c2064d4c209</string>
+    <string name="rosary_menu_title">Rosary</string>
+    <string name="daily_gospel_menu_title">Daily Gospel</string>
+    <string name="menu_language">Language</string>
+    <string name="dialog_select_lang_title">Language</string>
+    <string name="language_italian">Italian</string>
+    <string name="language_english">English</string>
 </resources>

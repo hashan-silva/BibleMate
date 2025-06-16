@@ -13,15 +13,8 @@
  *
  */
 
-package com.hashan0314.veritasdaily.network
+package com.hashan0314.veritasdaily.listener
 
-import com.hashan0314.veritasdaily.model.RssFeed
-import retrofit2.http.GET
-
-interface RssService {
-    @GET("en/word-of-the-day.rss.xml")
-    suspend fun getDailyGospelEn(): RssFeed
-
-    @GET("it/vangelo-del-giorno-e-parola-del-giorno.rss.xml")
-    suspend fun getDailyGospelIt(): RssFeed
+interface LanguageDialogListener {
+    fun onLanguageSelectedAndApplied()
 }

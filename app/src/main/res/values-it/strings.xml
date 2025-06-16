@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2025. Hashan Silva
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
+  ~
+  -->
+
+<resources>
+    <string name="app_name">Veritas Daily</string>
+    <string name="expand_or_collapse">Espandi o comprimi</string>
+    <string name="about_title">Informazioni</string>
+    <string name="app_icon_desc">Icona dell\'app</string>
+    <string name="about_description_text">Veritas Daily è il tuo compagno per la preghiera e la riflessione quotidiana, con il Santo Rosario, le letture quotidiane del Vangelo e altro per supportare il tuo cammino spirituale.</string>
+    <string name="gospel_source_attribution">Le letture quotidiane del Vangelo provengono dal feed RSS di Vatican News (www.vaticannews.va). Utilizzato con gratitudine.</string>
+    <string name="developed_by">Sviluppato da Shermal Hashan Silva (shermal0415@gmail.com)</string>
+    <string name="privacy_policy">Politica sulla Privacy</string>
+    <string name="menu_about">Informazioni</string>
+    <string name="version_format">Versione %1$s (%2$d)</string>
+    <string name="version_na">Versione N/D</string>
+    <string name="privacy_policy_url">https://www.freeprivacypolicy.com/live/40cdf670-e4ea-4b8e-a61e-9c2064d4c209</string>
+    <string name="menu_language">Lingua</string>
+    <string name="rosary_menu_title">Rosario</string>
+    <string name="daily_gospel_menu_title">Vangelo del Giorno</string>
+    <string name="dialog_select_lang_title">Lingua</string>
+    <string name="language_italian">Italiano</string>
+    <string name="language_english">Inglese</string>
+</resources>

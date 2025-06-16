@@ -23,12 +23,20 @@
         <item
             android:id="@+id/nav_daily_gospel_fragment"
             android:icon="@drawable/ic_menu_book"
-            android:title="Daily Gospel" />
+            android:title="@string/daily_gospel_menu_title" />
 
         <item
             android:id="@+id/nav_rosary_fragment"
             android:icon="@drawable/ic_menu_rosary"
-            android:title="Rosary" />
+            android:title="@string/rosary_menu_title" />
+
+        <item
+            android:id="@+id/nav_select_lang_fragment"
+            android:orderInCategory="90"
+            android:icon="@drawable/ic_language"
+            android:title="@string/menu_language"
+            app:showAsAction="never"
+            />
 
         <item
             android:id="@+id/nav_about_fragment"
@@ -36,6 +44,7 @@
             android:orderInCategory="100"
             android:title="@string/about_title"
             app:showAsAction="never"/>
+
     </group>
 
 </menu>

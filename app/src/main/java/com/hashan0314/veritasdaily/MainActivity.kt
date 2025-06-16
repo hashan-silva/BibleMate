@@ -15,6 +15,7 @@
 
 package com.hashan0314.veritasdaily
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
@@ -28,11 +29,13 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.hashan0314.veritasdaily.databinding.ActivityMainBinding
+import com.hashan0314.veritasdaily.helper.LocaleHelper
+import com.hashan0314.veritasdaily.listener.LanguageDialogListener
 import com.hashan0314.veritasdaily.repository.GospelRepository
 import com.hashan0314.veritasdaily.ui.viewmodel.GospelViewModel
 import com.hashan0314.veritasdaily.ui.viewmodel.GospelViewModelFactory
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), LanguageDialogListener {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
@@ -40,7 +43,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var drawerLayout: DrawerLayout
 
     private val viewModel: GospelViewModel by viewModels {
-        GospelViewModelFactory(GospelRepository())
+        GospelViewModelFactory(GospelRepository(applicationContext))
+    }
+
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(LocaleHelper.updateBaseContextLocale(newBase))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,8 +64,14 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
 
+        val navigationItems = setOf(
+            R.id.nav_daily_gospel_fragment,
+            R.id.nav_rosary_fragment,
+            R.id.nav_about_fragment,
+            R.id.nav_select_lang_fragment
+        )
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.nav_daily_gospel_fragment, R.id.nav_rosary_fragment, R.id.nav_about_fragment),
+            navigationItems,
             drawerLayout
         )
 
@@ -92,5 +105,10 @@ class MainActivity : AppCompatActivity() {
         } else {
             super.onBackPressed()
         }
+    }
+
+    override fun onLanguageSelectedAndApplied() {
+        recreate()
+        viewModel.fetchGospel()
     }
 }
