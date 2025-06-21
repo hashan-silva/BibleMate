@@ -2,7 +2,7 @@
 
 [![Build Status](https://github.com/hashansilva/BibleMate/actions/workflows/android_build.yml/badge.svg)](https://github.com/hashansilva/BibleMate/actions/workflows/android_build.yml)
 [![CodeQL](https://github.com/hashansilva/BibleMate/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/hashansilva/BibleMate/actions/workflows/github-code-scanning/codeql)
-[![SonarCloud analysis](https://github.com/hashansilva/BibleMate/actions/workflows/sonarcloud.yml/badge.svg)](https://github.com/hashansilva/BibleMate/actions/workflows/sonarcloud.yml)
+[![SonarCloud analysis](https://github.com/hashan-silva/BibleMate/actions/workflows/sonarcloud.yml/badge.svg)](https://github.com/hashan-silva/BibleMate/actions/workflows/sonarcloud.yml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=hashan-silva_BibleMate&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=hashan-silva_BibleMate)
 
 **Veritas Daily** is a spiritual companion Android application for daily prayer and reflection. It
