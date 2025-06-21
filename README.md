@@ -3,6 +3,7 @@
 [![Build Status](https://github.com/hashansilva/BibleMate/actions/workflows/android_build.yml/badge.svg)](https://github.com/hashansilva/BibleMate/actions/workflows/android_build.yml)
 [![CodeQL](https://github.com/hashansilva/BibleMate/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/hashansilva/BibleMate/actions/workflows/github-code-scanning/codeql)
 [![SonarCloud analysis](https://github.com/hashan-silva/BibleMate/actions/workflows/sonarcloud.yml/badge.svg)](https://github.com/hashan-silva/BibleMate/actions/workflows/sonarcloud.yml)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=hashan-silva_BibleMate&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=hashan-silva_BibleMate)
 
 **Veritas Daily** is a spiritual companion Android application for daily prayer and reflection. It
 includes features such as the Holy Rosary, Daily Gospel readings (sourced from Vatican News), and an
@@ -151,6 +152,13 @@ Key dependencies include:
 > Full list available in `app/build.gradle`.
 
 ---
+
+## Code Quality
+
+Pull requests trigger a [SonarCloud](https://sonarcloud.io) analysis. Configure the `SONAR_TOKEN` secret in your repository to enable the workflow.
+
+---
+
 
 ## Contributing
 
