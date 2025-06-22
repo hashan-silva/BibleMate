@@ -25,7 +25,9 @@ import com.hashan0314.veritasdaily.model.Item
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class GospelAdapter : ListAdapter<Item, GospelAdapter.GospelViewHolder>(GospelDiffCallback()) {
+class GospelAdapter(
+    private val onItemClick: ((Item) -> Unit)? = null
+) : ListAdapter<Item, GospelAdapter.GospelViewHolder>(GospelDiffCallback()) {
 
     inner class GospelViewHolder(private val binding: ItemGospelBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -51,6 +53,7 @@ class GospelAdapter : ListAdapter<Item, GospelAdapter.GospelViewHolder>(GospelDi
             }
             binding.itemDescription.text =
                 HtmlCompat.fromHtml(item.description, HtmlCompat.FROM_HTML_MODE_LEGACY)
+            binding.root.setOnClickListener {onItemClick?.invoke(item)}
         }
     }
 
