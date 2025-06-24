@@ -17,4 +17,5 @@
     <string name="version_format">Version %1$s (%2$d)</string>
     <string name="version_na">Version N/A</string>
     <string name="privacy_policy_url">https://www.freeprivacypolicy.com/live/40cdf670-e4ea-4b8e-a61e-9c2064d4c209</string>
+    <string name="listen_to_the_word">Listen to the word</string>
 </resources>
