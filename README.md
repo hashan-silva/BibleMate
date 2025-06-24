@@ -1,6 +1,7 @@
 # Veritas Daily - Android App
 
 [![Build Status](https://github.com/hashansilva/BibleMate/actions/workflows/android_build.yml/badge.svg)](https://github.com/hashansilva/BibleMate/actions/workflows/android_build.yml)
+[![Android Lint](https://github.com/hashansilva/BibleMate/actions/workflows/android_lint.yml/badge.svg)](https://github.com/hashansilva/BibleMate/actions/workflows/android_lint.yml)
 [![CodeQL](https://github.com/hashansilva/BibleMate/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/hashansilva/BibleMate/actions/workflows/github-code-scanning/codeql)
 [![SonarCloud analysis](https://github.com/hashan-silva/BibleMate/actions/workflows/sonarcloud.yml/badge.svg)](https://github.com/hashan-silva/BibleMate/actions/workflows/sonarcloud.yml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=hashan-silva_BibleMate&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=hashan-silva_BibleMate)
@@ -156,6 +157,8 @@ Key dependencies include:
 ## Code Quality
 
 Pull requests trigger a [SonarCloud](https://sonarcloud.io) analysis. Configure the `SONAR_TOKEN` secret in your repository to enable the workflow.
+
+Android Lint checks run on pull requests and comment lint issues with a link to the full report.
 
 ---
 

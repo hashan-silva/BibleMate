@@ -1,0 +1,40 @@
+name: Android Lint
+
+on:
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'corretto'
+          java-version: '17'
+          cache: gradle
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+      - name: Run Android Lint
+        run: ./gradlew lint
+      - name: Count Lint issues
+        id: lint_count
+        run: |
+          count=$(grep -o '<issue' app/build/reports/lint-results-debug.xml | wc -l || echo 0)
+          echo "count=$count" >> $GITHUB_OUTPUT
+      - name: Upload lint report
+        id: upload_lint
+        uses: actions/upload-artifact@v4
+        with:
+          name: lint-report
+          path: app/build/reports/lint-results-debug.html
+      - name: Comment lint results
+        if: github.event_name == 'pull_request'
+        uses: thollander/actions-comment-pull-request@v2
+        with:
+          message: |
+            **Android Lint** found `${{ steps.lint_count.outputs.count }}` issues. [View report](${{ steps.upload_lint.outputs.artifact-url }})
+          comment_tag: android-lint

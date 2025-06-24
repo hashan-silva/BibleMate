@@ -50,7 +50,7 @@ jobs:
           fetch-depth: 0
 
       - name: Analyze with SonarCloud
-
+        
         # You can pin the exact commit or the version.
         # uses: SonarSource/sonarcloud-github-action@v2.2.0
         uses: SonarSource/sonarcloud-github-action@4006f663ecaf1f8093e8e4abb9227f6041f52216
@@ -72,3 +72,17 @@ jobs:
             #-Dsonar.verbose= # optional, default is false
           # When you need the analysis to take place in a directory other than the one from which it was launched, default is .
           projectBaseDir: .
+
+      - name: SonarCloud Quality Gate check
+        id: scgate
+        uses: SonarSource/sonarcloud-quality-gate-action@v1
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+      - name: Comment quality gate status
+        if: github.event_name == 'pull_request'
+        uses: thollander/actions-comment-pull-request@v2
+        with:
+          message: |
+            **SonarCloud Quality Gate**: ${{ steps.scgate.outputs.quality_gate_status }}
+          comment_tag: sonar-quality-gate
