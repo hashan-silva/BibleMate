@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var drawerLayout: DrawerLayout
 
     private val viewModel: GospelViewModel by viewModels {
-        GospelViewModelFactory(GospelRepository())
+        GospelViewModelFactory(application, GospelRepository())
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,7 +58,11 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
 
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.nav_daily_gospel_fragment, R.id.nav_rosary_fragment, R.id.nav_about_fragment),
+            setOf(
+                R.id.nav_daily_gospel_fragment,
+                R.id.nav_rosary_fragment,
+                R.id.nav_about_fragment
+            ),
             drawerLayout
         )
 

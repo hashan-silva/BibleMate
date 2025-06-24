@@ -16,7 +16,6 @@
 package com.hashan0314.veritasdaily.ui.fragment
 
 import android.os.Bundle
-import android.speech.tts.TextToSpeech
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,6 +25,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.tabs.TabLayout
+import com.hashan0314.veritasdaily.R
 import com.hashan0314.veritasdaily.databinding.FragementDailyGospelBinding
 import com.hashan0314.veritasdaily.ui.adapter.GospelAdapter
 import com.hashan0314.veritasdaily.ui.viewmodel.GospelViewModel
@@ -45,7 +45,6 @@ class DailyGospelFragment : Fragment() {
     private val tabDates = mutableListOf<Date>()
     private val tabDateFormat = SimpleDateFormat("MMM d", Locale.getDefault())
     private var uiInitialized = false
-    private var textToSpeech: TextToSpeech? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -56,18 +55,30 @@ class DailyGospelFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        textToSpeech = TextToSpeech(requireContext()) { status ->
-            if (status == TextToSpeech.SUCCESS) {
-                textToSpeech?.language = Locale.getDefault()
-            }
-        }
         setupRecyclerView()
         setupObservers()
         setupDateTabs()
+        setupTtsButton()
         if (!uiInitialized && viewModel.isLoading.value == false) {
             // If not loading and UI not init, proceed
             initializeUiAfterDataLoad()
         }
+    }
+
+    private fun setupTtsButton() {
+        binding.fabTts.setOnClickListener {
+            if (viewModel.isSpeaking.value == true) {
+                viewModel.stopSpeaking()
+            } else {
+                val item = viewModel.filteredGospelList.value?.firstOrNull()
+                item?.let {
+                    val text = HtmlCompat.fromHtml(it.description, HtmlCompat.FROM_HTML_MODE_LEGACY)
+                        .toString()
+                    viewModel.speakGospel(text)
+                }
+            }
+        }
+        updateTtsButtonStatus(viewModel.isSpeaking.value == true)
     }
 
     private fun initializeUiAfterDataLoad() {
@@ -156,6 +167,17 @@ class DailyGospelFragment : Fragment() {
                 binding.tabLayoutGospel.removeAllTabs()
             }
         }
+        viewModel.isSpeaking.observe(viewLifecycleOwner) { isSpeaking ->
+            updateTtsButtonStatus(isSpeaking)
+        }
+    }
+
+    private fun updateTtsButtonStatus(speaking: Boolean?) {
+        if (speaking == true) {
+            binding.fabTts.setImageResource(R.drawable.ic_btn_speak_stop)
+        } else {
+            binding.fabTts.setImageResource(R.drawable.ic_btn_speak_now)
+        }
     }
 
     private fun observerSelectedDate(dateToSelect: Date) {
@@ -182,8 +204,7 @@ class DailyGospelFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        textToSpeech?.stop()
-        textToSpeech?.shutdown()
+        viewModel.stopSpeaking()
         uiInitialized = false
         _binding = null
     }
@@ -193,9 +214,7 @@ class DailyGospelFragment : Fragment() {
             val plainText = HtmlCompat.fromHtml(
                 item.description, HtmlCompat.FROM_HTML_MODE_LEGACY
             ).toString()
-            textToSpeech?.speak(
-                plainText, TextToSpeech.QUEUE_FLUSH, null, null
-            )
+            viewModel.speakGospel(plainText)
         }
         binding.recyclerViewGospel.apply {
             layoutManager = LinearLayoutManager(requireContext())

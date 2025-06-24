@@ -15,16 +15,20 @@
 
 package com.hashan0314.veritasdaily.ui.viewmodel
 
+import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.hashan0314.veritasdaily.repository.GospelRepository
 
-class GospelViewModelFactory(private val repository: GospelRepository) : ViewModelProvider.Factory {
+class GospelViewModelFactory(
+    private val application: Application,
+    private val repository: GospelRepository
+) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if(modelClass.isAssignableFrom(GospelViewModel::class.java)){
+        if (modelClass.isAssignableFrom(GospelViewModel::class.java)) {
             @Suppress
                 ("UNCHECKED_CAST")
-            return GospelViewModel(repository) as T
+            return GospelViewModel(application, repository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
