@@ -64,7 +64,7 @@ jobs:
             -Dsonar.projectKey=hashan-silva_BibleMate
             -Dsonar.organization=hashan-silva
             -Dsonar.scm.provider=git
-            -Dsonar.pullrequest.key=${{ github.event.pull_request.number }}
+        uses: SonarSource/sonarqube-quality-gate-action@v1.2.0
             -Dsonar.pullrequest.branch=${{ github.head_ref }}
             -Dsonar.pullrequest.base=${{ github.base_ref }}
             -Dsonar.pullrequest.github.summary_comment=true
