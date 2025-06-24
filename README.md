@@ -155,7 +155,9 @@ Key dependencies include:
 
 ## Code Quality
 
-Pull requests trigger a [SonarCloud](https://sonarcloud.io) analysis. Configure the `SONAR_TOKEN` secret in your repository to enable the workflow.
+Pushes and pull requests to the **dev** and **master** branches trigger a
+[SonarCloud](https://sonarcloud.io) analysis. Configure the `SONAR_TOKEN`
+secret in your repository to enable the workflow.
 
 ---
 
