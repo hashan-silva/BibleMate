@@ -36,7 +36,8 @@ on:
   workflow_dispatch:
 
 permissions:
-  pull-requests: read # allows SonarCloud to decorate PRs with analysis results
+  contents: read
+  pull-requests: write # allows SonarCloud to decorate PRs and post comments
 
 jobs:
   Analysis:
@@ -65,6 +66,7 @@ jobs:
             -Dsonar.organization=hashan-silva
             -Dsonar.scm.provider=git
         uses: SonarSource/sonarqube-quality-gate-action@v1.2.0
+          github_token: ${{ secrets.GITHUB_TOKEN }}
             -Dsonar.pullrequest.branch=${{ github.head_ref }}
             -Dsonar.pullrequest.base=${{ github.base_ref }}
             -Dsonar.pullrequest.github.summary_comment=true
