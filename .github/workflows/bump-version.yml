@@ -1,10 +1,11 @@
 name: Bump version
 
 on:
-  push:
+  pull_request:
     branches:
-      - "fix*"
-      - "feature*"
+      - dev
+    types:
+      - closed
   workflow_dispatch:
 
 permissions:
@@ -12,6 +13,10 @@ permissions:
 
 jobs:
   bump:
+    if: >-
+      github.event.pull_request.merged == true &&
+      (startsWith(github.event.pull_request.head.ref, 'fix/') ||
+       startsWith(github.event.pull_request.head.ref, 'feature/'))
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -19,13 +24,13 @@ jobs:
           persist-credentials: true
       - name: Bump version in build.gradle
         run: |
-          branch="${GITHUB_REF#refs/heads/}"
+          branch="${GITHUB_HEAD_REF}"
           version_code=$(grep -m1 'versionCode' app/build.gradle | awk '{print $2}')
           version_name=$(grep -m1 'versionName' app/build.gradle | awk '{print $2}' | tr -d '"')
           IFS='.' read -r major minor patch <<< "$version_name"
-          if [[ "$branch" == fix* ]]; then
+          if [[ "$branch" == fix/* ]]; then
             patch=$((patch + 1))
-          elif [[ "$branch" == feature* ]]; then
+          elif [[ "$branch" == feature/* ]]; then
             minor=$((minor + 1))
             patch=0
           else
