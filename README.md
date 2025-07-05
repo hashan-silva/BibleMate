@@ -74,7 +74,7 @@ About section for more context on its usage and content.
     - **Lifecycle:** ViewModel, LiveData / Kotlin Flows
 - **Coroutines:** Kotlin Coroutines
 - **DI (Dependency Injection):** *Specify if Hilt, Koin, or manual*
-- **Testing Frameworks:** *Specify e.g., JUnit, Mockito, Espresso*
+- **Testing Frameworks:** JUnit 4 for unit tests and Espresso for UI testing
 
 ---
 
@@ -103,7 +103,12 @@ cd BibleMate
 
 1. Follow the [official Android guide](https://developer.android.com/studio/publish/app-signing).
 2. Use **Build > Generate Signed Bundle / APK...**
+### Running Tests
 
+Run unit tests with:
+```bash
+./gradlew test
+```
 ---
 
 ## Project Structure
