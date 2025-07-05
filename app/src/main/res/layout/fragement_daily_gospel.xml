@@ -40,5 +40,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tabLayout_gospel"
         tools:listitem="@layout/item_gospel" />
+    
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabTts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="@string/listen_to_the_word"
+        android:layout_margin="16dp"
+        app:srcCompat="@drawable/ic_btn_speak_now"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
