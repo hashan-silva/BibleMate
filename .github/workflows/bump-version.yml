@@ -1,11 +1,10 @@
 name: Bump version
 
 on:
-  pull_request:
+  push:
     branches:
-      - dev
-    types:
-      - closed
+      - 'fix/**'
+      - 'feature/**'
   workflow_dispatch:
 
 permissions:
@@ -13,10 +12,6 @@ permissions:
 
 jobs:
   bump:
-    if: >-
-      github.event.pull_request.merged == true &&
-      (startsWith(github.event.pull_request.head.ref, 'fix/') ||
-       startsWith(github.event.pull_request.head.ref, 'feature/'))
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -24,7 +19,12 @@ jobs:
           persist-credentials: true
       - name: Bump version in build.gradle
         run: |
-          branch="${GITHUB_HEAD_REF}"
+          branch="$GITHUB_REF_NAME"
+          last_commit_message=$(git log -1 --pretty=%B)
+          if [[ "$last_commit_message" == "chore: bump version to"* ]]; then
+            echo "Version already bumped in the last commit. Skipping."
+            exit 0
+          fi
           version_code=$(grep -m1 'versionCode' app/build.gradle | awk '{print $2}')
           version_name=$(grep -m1 'versionName' app/build.gradle | awk '{print $2}' | tr -d '"')
           IFS='.' read -r major minor patch <<< "$version_name"
@@ -44,4 +44,3 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git commit -am "chore: bump version to $new_version_name" || echo "No changes to commit"
           git push
-
