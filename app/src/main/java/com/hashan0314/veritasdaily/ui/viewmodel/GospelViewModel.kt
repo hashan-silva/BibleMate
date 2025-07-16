@@ -15,10 +15,13 @@
 
 package com.hashan0314.veritasdaily.ui.viewmodel
 
+import android.app.Application
+import android.speech.tts.TextToSpeech
+import android.speech.tts.UtteranceProgressListener
 import android.util.Log
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hashan0314.veritasdaily.model.Item
 import com.hashan0314.veritasdaily.repository.GospelRepository
@@ -31,7 +34,9 @@ import java.util.Locale
 import java.util.TimeZone
 
 
-class GospelViewModel(private val repository: GospelRepository) : ViewModel() {
+class GospelViewModel(application: Application, private val repository: GospelRepository) :
+    AndroidViewModel(application), TextToSpeech.OnInitListener {
+
     private val _currentSelectedDate = MutableLiveData<Date?>()
     val currentSelectedDateLiveData: LiveData<Date?> = _currentSelectedDate;
     private val _originalGospelList = MutableLiveData<List<Item>>()
@@ -48,6 +53,13 @@ class GospelViewModel(private val repository: GospelRepository) : ViewModel() {
     private val _errorMessage = MutableLiveData<String?>()
     val errorMessage: LiveData<String?> = _errorMessage
 
+    private var tts: TextToSpeech? = null
+    private val _isTtsInitialized = MutableLiveData<Boolean>(false)
+    val isTtsInitialized: LiveData<Boolean> = _isTtsInitialized
+
+    private val _isSpeaking = MutableLiveData<Boolean>(false)
+    val isSpeaking: LiveData<Boolean> = _isSpeaking
+
     private val pubDateFormat = SimpleDateFormat(
         "EEE, dd MMM yyyy HH:mm:ss Z",
         Locale.ENGLISH
@@ -55,6 +67,86 @@ class GospelViewModel(private val repository: GospelRepository) : ViewModel() {
 
     init {
         fetchGospel()
+        tts = TextToSpeech(application, this)
+    }
+
+    override fun onInit(status: Int) {
+        if (status == TextToSpeech.SUCCESS) {
+            val result = tts?.setLanguage(Locale.getDefault())
+            if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                Log.e("GospelViewModel", "Language not supported")
+                _errorMessage.postValue("TTS language not supported")
+                _isTtsInitialized.postValue(false)
+            } else {
+                _isTtsInitialized.postValue(true)
+                Log.i("GospelViewModel", "TTS initialized")
+
+            }
+        } else {
+            Log.e("GospelViewModel", "TTS initialization failed")
+            _errorMessage.postValue("TTS initialization failed")
+            _isTtsInitialized.postValue(false)
+        }
+        tts?.setOnUtteranceProgressListener(object : UtteranceProgressListener() {
+            override fun onStart(utteranceId: String?) {
+                _isSpeaking.postValue(true)
+            }
+
+            override fun onDone(utteranceId: String?) {
+                _isSpeaking.postValue(false)
+            }
+
+            @Deprecated("Deprecated in Java")
+            override fun onError(utteranceId: String?) {
+                _isSpeaking.postValue(false)
+                _errorMessage.postValue("TTS error occurred")
+            }
+
+            override fun onError(utteranceId: String?, errorCode: Int) {
+                _isSpeaking.postValue(false)
+                _errorMessage.postValue("TTS error occurred: $utteranceId, error code: $errorCode")
+                Log.e("GospelViewModel", "TTS error occurred: $utteranceId, error code: $errorCode")
+            }
+
+        })
+    }
+
+    fun speakGospel(text: String) {
+        if (_isTtsInitialized.value == true && tts != null) {
+            if (text.isNotBlank()) {
+                val utteranceId = "gospel_utterence_${System.currentTimeMillis()}"
+                Log.d("GospelViewModel_TTS", "Attempting to speak: '$text' with id: $utteranceId")
+                tts?.speak(text, TextToSpeech.QUEUE_FLUSH, null, utteranceId)
+            }else{
+                Log.w("GospelViewModel_TTS", "Empty text to speak")
+                _errorMessage.postValue("Empty text to speak")
+            }
+        }else{
+            Log.e("GospelViewModel_TTS", "TTS not initialized")
+            _errorMessage.postValue("TTS not initialized")
+            if(tts == null){
+                Log.d("GospelViewModel_TTS", "TTS is null")
+                tts = TextToSpeech(getApplication(), this)
+            }
+        }
+    }
+
+    fun stopSpeaking() {
+        if(tts?.isSpeaking == true){
+            tts?.stop()
+            Log.d("GospelViewModel_TTS", "TTS stopped")
+        }
+        _isSpeaking.postValue(false)
+    }
+
+    public override fun onCleared() {
+        super.onCleared()
+        if(tts != null){
+            tts?.stop()
+            tts?.shutdown()
+            tts = null
+            Log.i("GospelViewModel_TTS", "TTS shutdown")
+        }
     }
 
     fun fetchGospel() {// Start loading
