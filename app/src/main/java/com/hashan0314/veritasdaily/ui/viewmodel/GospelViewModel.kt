@@ -139,7 +139,7 @@ class GospelViewModel(application: Application, private val repository: GospelRe
         _isSpeaking.postValue(false)
     }
 
-    override fun onCleared() {
+    public override fun onCleared() {
         super.onCleared()
         if(tts != null){
             tts?.stop()
