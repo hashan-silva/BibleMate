@@ -169,6 +169,10 @@ The SonarCloud quality gate status is posted back on each pull request.
 
 Android Lint checks run on pull requests and comment lint issues with a link to the full report.
 
+The SonarCloud quality gate status is posted back on each pull request.
+
+Android Lint checks run on pull requests and comment lint issues with a link to the full report.
+
 ---
 
 
