@@ -16,10 +16,12 @@
 package com.hashan0314.veritasdaily.ui.fragment
 
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -43,6 +45,7 @@ class DailyGospelFragment : Fragment() {
     private val tabDates = mutableListOf<Date>()
     private val tabDateFormat = SimpleDateFormat("MMM d", Locale.getDefault())
     private var uiInitialized = false
+    private var textToSpeech: TextToSpeech? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -53,6 +56,11 @@ class DailyGospelFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        textToSpeech = TextToSpeech(requireContext()) { status ->
+            if (status == TextToSpeech.SUCCESS) {
+                textToSpeech?.language = Locale.getDefault()
+            }
+        }
         setupRecyclerView()
         setupObservers()
         setupDateTabs()
@@ -101,6 +109,7 @@ class DailyGospelFragment : Fragment() {
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
+                // No action needed
             }
 
             override fun onTabReselected(tab: TabLayout.Tab?) {
@@ -124,38 +133,23 @@ class DailyGospelFragment : Fragment() {
             }
         }
         viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
-            if (!isLoading && !uiInitialized) {
-                setupDateTabs()
-                initializeUiAfterDataLoad()
-            }
+            observerIsLoading(isLoading)
         }
         viewModel.currentSelectedDateLiveData.observe(viewLifecycleOwner) { selectedDate ->
             selectedDate?.let { dateToSelect ->
-                if (uiInitialized) {
-                    val position = tabDates.indexOfFirst {
-                        val cal1 = Calendar.getInstance().apply { time = it }
-                        val cal2 = Calendar.getInstance().apply { time = dateToSelect }
-                        cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR) && cal1.get(
-                            Calendar.YEAR
-                        ) == cal2.get(Calendar.YEAR)
-                    }
-                    if (position != -1 && binding.tabLayoutGospel.selectedTabPosition != position) {
-                        binding.tabLayoutGospel.getTabAt(position)?.select()
-                    }
-                }
+                observerSelectedDate(dateToSelect)
             }
         }
-        viewModel.isInitialDataLoaded.observe(viewLifecycleOwner){
-            isLoaded ->
-            if(isLoaded && !uiInitialized){
+        viewModel.isInitialDataLoaded.observe(viewLifecycleOwner) { isLoaded ->
+            if (isLoaded && !uiInitialized) {
                 if (!viewModel.originalGospelList.value.isNullOrEmpty()) {
                     binding.tabLayoutGospel.visibility = View.VISIBLE
                     setupDateTabs()
-                }else{
+                } else {
                     binding.tabLayoutGospel.visibility = View.GONE
                     uiInitialized = false
                 }
-            }else if(!isLoaded){
+            } else if (!isLoaded) {
                 binding.tabLayoutGospel.visibility = View.GONE
                 uiInitialized = false
                 tabDates.clear()
@@ -164,14 +158,45 @@ class DailyGospelFragment : Fragment() {
         }
     }
 
+    private fun observerSelectedDate(dateToSelect: Date) {
+        if (uiInitialized) {
+            val position = tabDates.indexOfFirst {
+                val cal1 = Calendar.getInstance().apply { time = it }
+                val cal2 = Calendar.getInstance().apply { time = dateToSelect }
+                cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR) && cal1.get(
+                    Calendar.YEAR
+                ) == cal2.get(Calendar.YEAR)
+            }
+            if (position != -1 && binding.tabLayoutGospel.selectedTabPosition != position) {
+                binding.tabLayoutGospel.getTabAt(position)?.select()
+            }
+        }
+    }
+
+    private fun observerIsLoading(isLoading: Boolean) {
+        if (!isLoading && !uiInitialized) {
+            setupDateTabs()
+            initializeUiAfterDataLoad()
+        }
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
+        textToSpeech?.stop()
+        textToSpeech?.shutdown()
         uiInitialized = false
         _binding = null
     }
 
     private fun setupRecyclerView() {
-        gospelAdapter = GospelAdapter()
+        gospelAdapter = GospelAdapter { item ->
+            val plainText = HtmlCompat.fromHtml(
+                item.description, HtmlCompat.FROM_HTML_MODE_LEGACY
+            ).toString()
+            textToSpeech?.speak(
+                plainText, TextToSpeech.QUEUE_FLUSH, null, null
+            )
+        }
         binding.recyclerViewGospel.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = gospelAdapter

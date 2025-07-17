@@ -1,0 +1,46 @@
+name: Bump version
+
+on:
+  push:
+    branches:
+      - 'fix/**'
+      - 'feature/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Bump version in build.gradle
+        run: |
+          branch="$GITHUB_REF_NAME"
+          last_commit_message=$(git log -1 --pretty=%B)
+          if [[ "$last_commit_message" == "chore: bump version to"* ]]; then
+            echo "Version already bumped in the last commit. Skipping."
+            exit 0
+          fi
+          version_code=$(grep -m1 'versionCode' app/build.gradle | awk '{print $2}')
+          version_name=$(grep -m1 'versionName' app/build.gradle | awk '{print $2}' | tr -d '"')
+          IFS='.' read -r major minor patch <<< "$version_name"
+          if [[ "$branch" == fix/* ]]; then
+            patch=$((patch + 1))
+          elif [[ "$branch" == feature/* ]]; then
+            minor=$((minor + 1))
+            patch=0
+          else
+            echo "Branch $branch does not trigger version bump" && exit 0
+          fi
+          new_version_name="$major.$minor.$patch"
+          new_version_code=$((version_code + 1))
+          sed -i "s/versionCode [0-9]\+/versionCode $new_version_code/" app/build.gradle
+          sed -i "s/versionName \"[0-9.]*\"/versionName \"$new_version_name\"/" app/build.gradle
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -am "chore: bump version to $new_version_name" || echo "No changes to commit"
+          git push
