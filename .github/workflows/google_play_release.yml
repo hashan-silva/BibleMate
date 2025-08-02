@@ -22,22 +22,19 @@ jobs:
           cache: gradle
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
+      - name: Decode keystore
+        id: decode_keystore
+        uses: timheuer/base64-to-file@v1.2
+        with:
+          fileName: signingkey.jks
+          encodedString: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
       - name: Build release bundle
         run: ./gradlew bundleRelease --warning-mode=none
-      - name: Sign bundle
-        id: sign
-        uses: r0adkll/sign-android-release@v1
-        with:
-          releaseDirectory: app/build/outputs/bundle/release
-          signingKeyBase64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
-          alias: ${{ secrets.ANDROID_KEY_ALIAS }}
-          keyStorePassword: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
-          keyPassword: ${{ secrets.ANDROID_KEY_PASSWORD }}
       - name: Upload to Google Play
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
           packageName: com.hashan0314.veritasdaily
-          releaseFiles: ${{ steps.sign.outputs.signedReleaseFile }}
+          releaseFiles: "app/build/outputs/bundle/release/app-release.aab"
           track: production
 
