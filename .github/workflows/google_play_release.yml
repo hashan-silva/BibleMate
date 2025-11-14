@@ -30,6 +30,11 @@ jobs:
           encodedString: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
       - name: Build release bundle
         run: ./gradlew bundleRelease --warning-mode=none
+        env:
+          SIGNING_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          SIGNING_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+          SIGNING_KEY_STORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          SIGNING_KEY_STORE_PATH: ${{ steps.decode_keystore.outputs.filePath }}
       - name: Upload to Google Play
         uses: r0adkll/upload-google-play@v1
         with:
