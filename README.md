@@ -7,6 +7,10 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=hashan-silva_BibleMate&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=hashan-silva_BibleMate)
 
 <!-- GitAds-Verify: 1PMORVF1G37MI6ATACJJJ3MR5GBWNHH9 -->
+## GitAds Sponsored
+[![Sponsored by GitAds](https://gitads.dev/v1/ad-serve?source=hashan-silva/biblemate@github)](https://gitads.dev/v1/ad-track?source=hashan-silva/biblemate@github)
+
+
 
 **Veritas Daily** is a spiritual companion Android application for daily prayer and reflection. It
 includes features such as the Holy Rosary, Daily Gospel readings (sourced from Vatican News), and an
