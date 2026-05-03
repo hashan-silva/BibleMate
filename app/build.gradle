@@ -4,6 +4,19 @@ plugins {
     alias(libs.plugins.kotlin.compose)
 }
 
+import org.gradle.api.GradleException
+
+def signingKeyStorePath = System.getenv("SIGNING_KEY_STORE_PATH")
+def signingKeyStorePassword = System.getenv("SIGNING_KEY_STORE_PASSWORD")
+def signingKeyAlias = System.getenv("SIGNING_KEY_ALIAS")
+def signingKeyPassword = System.getenv("SIGNING_KEY_PASSWORD")
+def releaseSigningEnabled = [
+        signingKeyStorePath,
+        signingKeyStorePassword,
+        signingKeyAlias,
+        signingKeyPassword
+].every { it != null && !it.trim().isEmpty() }
+
 android {
     namespace 'com.hashan0314.veritasdaily'
     compileSdk 35
@@ -20,11 +33,26 @@ android {
 
     signingConfigs {
         release {
-            if (System.getenv("SIGNING_KEY_ALIAS") != null) {
-                storeFile file(System.getenv("SIGNING_KEY_STORE_PATH"))
-                storePassword System.getenv("SIGNING_KEY_STORE_PASSWORD")
-                keyAlias System.getenv("SIGNING_KEY_ALIAS")
-                keyPassword System.getenv("SIGNING_KEY_PASSWORD")
+            if (releaseSigningEnabled) {
+                def signingStoreFile = file(signingKeyStorePath)
+                def lowerCaseStoreName = signingStoreFile.name.toLowerCase()
+
+                if (!signingStoreFile.exists()) {
+                    throw new GradleException("SIGNING_KEY_STORE_PATH does not exist: ${signingStoreFile}")
+                }
+
+                if ([".der", ".cer", ".crt", ".pem"].any { lowerCaseStoreName.endsWith(it) }) {
+                    throw new GradleException(
+                            "SIGNING_KEY_STORE_PATH must point to a keystore file (.jks or .keystore), " +
+                                    "but was set to '${signingStoreFile}'. " +
+                                    "Certificates such as .der do not contain the private key required for release signing."
+                    )
+                }
+
+                storeFile signingStoreFile
+                storePassword signingKeyStorePassword
+                keyAlias signingKeyAlias
+                keyPassword signingKeyPassword
             }
         }
     }
@@ -32,7 +60,9 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
+            if (releaseSigningEnabled) {
+                signingConfig signingConfigs.release
+            }
         }
     }
     compileOptions {
